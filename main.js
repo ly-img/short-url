@@ -1,12 +1,12 @@
 let res
   function shorturl() {
     if(document.querySelector("#text").value==""){
-        alert("長鏈地址不能為空!")
+        alert("錯誤！長鏈地址不能為空!")
         return
     }
 
     document.getElementById("searchbtn").disabled=true;
-	document.getElementById("searchbtn").innerHTML='<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>請稍等...';
+	document.getElementById("searchbtn").innerHTML='<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>請稍等...馬上縮短！';
     fetch(window.location.pathname, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -17,14 +17,14 @@ let res
   .then(function(myJson) {
     res = myJson;
     document.getElementById("searchbtn").disabled=false;
-	document.getElementById("searchbtn").innerHTML=' 點擊生成 ';
+	document.getElementById("searchbtn").innerHTML=' 點擊縮短';
     if(res.key!=="")
     document.getElementById("result").innerHTML=window.location.origin+res.key;
     $('#exampleModal').modal('show')
-  }).catch(function(err){alert("錯誤，請重試 ！");
+  }).catch(function(err){alert("未知錯誤，請重試 ！");
   console.log(err);
   document.getElementById("searchbtn").disabled=false;
-	document.getElementById("searchbtn").innerHTML=' 點擊生成 ';})
+	document.getElementById("searchbtn").innerHTML=' 點擊縮短';})
   }
   function copyurl (id, attr) {
     let target = null;
