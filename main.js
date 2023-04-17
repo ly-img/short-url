@@ -1,12 +1,12 @@
 let res
   function shorturl() {
     if(document.querySelector("#text").value==""){
-        alert("Url cannot be empty!")
+        alert("長鏈地址不能為空!")
         return
     }
 
     document.getElementById("searchbtn").disabled=true;
-	document.getElementById("searchbtn").innerHTML='<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Please wait...';
+	document.getElementById("searchbtn").innerHTML='<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>請稍等...';
     fetch(window.location.pathname, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -17,14 +17,14 @@ let res
   .then(function(myJson) {
     res = myJson;
     document.getElementById("searchbtn").disabled=false;
-	document.getElementById("searchbtn").innerHTML=' Shorten it';
+	document.getElementById("searchbtn").innerHTML=' 點擊生成 ';
     if(res.key!=="")
     document.getElementById("result").innerHTML=window.location.origin+res.key;
     $('#exampleModal').modal('show')
-  }).catch(function(err){alert("Unknow error. Please retry!");
+  }).catch(function(err){alert("錯誤，請重試 ！");
   console.log(err);
   document.getElementById("searchbtn").disabled=false;
-	document.getElementById("searchbtn").innerHTML=' Shorten it';})
+	document.getElementById("searchbtn").innerHTML=' 點擊生成 ';})
   }
   function copyurl (id, attr) {
     let target = null;
@@ -49,11 +49,11 @@ let res
         range.selectNode(target);
         window.getSelection().removeAllRanges();
         window.getSelection().addRange(range);
-        document.execCommand('copy');
+        document.execCommand('複製');
         window.getSelection().removeAllRanges();
-        console.log('Copy success')
+        console.log('複製成功')
     } catch (e) {
-        console.log('Copy error')
+        console.log('複製失敗')
     }
 
     if (attr) {
