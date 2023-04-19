@@ -49,7 +49,7 @@ let res
         range.selectNode(target);
         window.getSelection().removeAllRanges();
         window.getSelection().addRange(range);
-        document.execCommand('複製');
+        document.execCommand('copy');
         window.getSelection().removeAllRanges();
         console.log('複製成功')
     } catch (e) {
