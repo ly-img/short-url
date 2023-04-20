@@ -1,7 +1,7 @@
 let res
   function shorturl() {
     if(document.querySelector("#text").value==""){
-        alert("Url cannot be empty!")
+        alert("错误：长链地址不能为空，请重新输入!")
         return
     }
 
@@ -17,14 +17,14 @@ let res
   .then(function(myJson) {
     res = myJson;
     document.getElementById("searchbtn").disabled=false;
-	document.getElementById("searchbtn").innerHTML=' Shorten it';
+	document.getElementById("searchbtn").innerHTML=' 点击缩短';
     if(res.key!=="")
     document.getElementById("result").innerHTML=window.location.origin+res.key;
     $('#exampleModal').modal('show')
-  }).catch(function(err){alert("Unknow error. Please retry!");
+  }).catch(function(err){alert("未知错误 请重试！！");
   console.log(err);
   document.getElementById("searchbtn").disabled=false;
-	document.getElementById("searchbtn").innerHTML=' Shorten it';})
+	document.getElementById("searchbtn").innerHTML=' 点击缩短';})
   }
   function copyurl (id, attr) {
     let target = null;
